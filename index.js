@@ -34,11 +34,12 @@ app.post('/webhook/', function (req, res) {
 		let sender = event.sender.id
 		if (event.message && event.message.text) {
 			let text = event.message.text
-			/*if (text === 'Generic') {
+			if (text === 'Generic') {
 				sendGenericMessage(sender)
 				continue
-			} */
-			if (text == 'cookies'){
+			} 
+
+			else if (text == 'cookies'){
 				var request = require('request');
 
 				var headers = {
@@ -50,10 +51,13 @@ app.post('/webhook/', function (req, res) {
 				    headers: headers
 				};
 
+
 				function callback(error, response, body) {
 				    if (!error && response.statusCode == 200) {
 				        console.log(body);
 				        sendTextMessage(sender, body, token)
+				        var resp = JSON.parse(body);
+				       	sendTextMessage(sender, resp.getElementsByTagName('query'), token)
 				    }
 				}
 
