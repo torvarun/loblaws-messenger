@@ -38,6 +38,7 @@ app.post('/webhook', function (req, res) {
         if (event.message && event.message.text) {
             sendMessage(event.sender.id, {text: "Echo: " + event.message.text});
         }
+        sendMessage(event.sender.id, {text: "Response"});
     }
     res.sendStatus(200);
 });
