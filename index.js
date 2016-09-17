@@ -57,8 +57,9 @@ app.post('/webhook/', function (req, res) {
 				    }
 				}
 
-				console.log("request sent")
+				sendTextMessage(sender, "request sent", token);
 				request(options, callback);
+				sendTextMessage(sender, "after request", token);
 
 			}
 			sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
