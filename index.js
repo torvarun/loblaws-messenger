@@ -46,7 +46,7 @@ function sendMessage(recipientId, message) {
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         //qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
-        qu: {access_token: AADnq0GJGSABADKMaiOk4TamNx4sgWrw83zhZBTMjtcfl75wj177DF5C4N9Syr78sZBZBjNdIGM7OW2Plk0QC5VvnaYtxJ8PnrcegYsKI6ttXFRBNvIqQwFFECYZAzdymheSkJk34GIZCxBvbVbgZB2qp9yXlus0dVGZBVEZABozbwZDZD},
+        qs: {access_token: AADnq0GJGSABADKMaiOk4TamNx4sgWrw83zhZBTMjtcfl75wj177DF5C4N9Syr78sZBZBjNdIGM7OW2Plk0QC5VvnaYtxJ8PnrcegYsKI6ttXFRBNvIqQwFFECYZAzdymheSkJk34GIZCxBvbVbgZB2qp9yXlus0dVGZBVEZABozbwZDZD},
         method: 'POST',
         json: {
             recipient: {id: recipientId},
