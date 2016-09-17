@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 
 // Set default index reponse
 app.get('/', function (req, res) {
-    res.send('loblaws-webhook');
+    res.send('LOBLAWS-MESSENGER');
 });
 
 // Facebook webhook verification
