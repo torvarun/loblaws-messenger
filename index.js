@@ -38,6 +38,29 @@ app.post('/webhook/', function (req, res) {
 				sendGenericMessage(sender)
 				continue
 			}
+			else if (text == 'cookies'){
+				var request = require('request');
+
+				var headers = {
+				    'Authorization': 'bearer fd887ce5-7b15-4c1e-93a0-dc91ce883ec6'
+				};
+
+				var options = {
+				    url: 'https://www.loblaws.ca/ecommerce/v2/loblaw/products/search?q=apple&page=0&pageSize=10&sort=recommended&filters=category:LSL001006000000',
+				    headers: headers
+				};
+
+				function callback(error, response, body) {
+				    if (!error && response.statusCode == 200) {
+				        console.log(body);
+				        sendTextMessage(sender, body, token)
+				    }
+				}
+
+				console.log("request sent")
+				request(options, callback);
+
+			}
 			sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
 		}
 		if (event.postback) {
