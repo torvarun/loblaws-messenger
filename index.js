@@ -15,7 +15,7 @@ app.use(bodyParser.json())
 
 // Index route
 app.get('/', function (req, res) {
-    res.send('1357261969')
+    res.send('loblaws-webhook')
 })
 
 // for Facebook verification
