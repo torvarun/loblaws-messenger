@@ -14,13 +14,12 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
 // Index route
-/*
-app.get('/', function (req, res) {
-    res.send('loblaws-webhook')
-})
-*/
-webhook: function(req, res) {
 
+app.get('/', function (req, res) {
+    //res.send('loblaws-webhook')
+    res.send(req.query['hub.challenge']);
+})
+webhook: function(req, res) {
    if (req.query['hub.verify_token'] === 'loblaws-webhook') {
       res.send(req.query['hub.challenge']);
    } else {
