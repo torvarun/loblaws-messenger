@@ -23,8 +23,7 @@ app.get('/webhook/', function (req, res) {
     if (req.query['hub.verify_token'] === 'loblaws-webhook') {
         res.send(req.query['hub.challenge'])
     }
-    else
-    	res.send('Error, wrong token')
+    res.send('Error, wrong token')
 })
 
 // Spin up the server
@@ -39,7 +38,7 @@ app.post('/webhook', function (req, res) {
         if (event.message && event.message.text) {
             sendMessage(event.sender.id, {text: "Echo: " + event.message.text});
         }
-        sendMessage(event.sender.id, {text: "Response"});
+        sendMessage(event.sender.id, {text: "response"});
     }
     res.sendStatus(200);
 });
