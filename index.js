@@ -34,17 +34,22 @@ app.listen(app.get('port'), function() {
 
 app.post('/webhook', function (req, res) {
     var events = req.body.entry[0].messaging;
+
+    console.log('Received POST to webhook from: ', req.connection);
+
     for (var i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
             sendMessage(event.sender.id, {text: "Echo: " + event.message.text});
         }
-        sendMessage(event.sender.id, {text: "response"});
     }
+
     res.sendStatus(200);
 });
 
 function sendMessage(recipientId, message) {
+    console.log('Sending message: ', message);
+
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
