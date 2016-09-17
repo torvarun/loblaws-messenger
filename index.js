@@ -35,7 +35,7 @@ app.listen(app.get('port'), function() {
 app.post('/webhook', function (req, res) {
     var events = req.body.entry[0].messaging;
 
-    console.log('Received POST to webhook from: ', req.connection);
+    console.log('Received POST to webhook from: ', req.connection.remoteAddress);
 
     for (var i = 0; i < events.length; i++) {
         var event = events[i];
@@ -48,7 +48,7 @@ app.post('/webhook', function (req, res) {
 });
 
 function sendMessage(recipientId, message) {
-    console.log('Sending message: ', message);
+    console.log('Sending message: \'', message.text, '\' to ', recipientId);
 
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
