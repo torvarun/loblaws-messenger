@@ -1,1 +1,1 @@
-web: node lib/index.js
+web: node --use-strict lib/index.js
