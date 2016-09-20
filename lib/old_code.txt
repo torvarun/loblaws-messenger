@@ -146,3 +146,25 @@ app.post('/webhook/', function (req, res) {
 
 	res.sendStatus(200);
 });
+
+function Prompt(id, message) {
+    this.id = id;
+    this.message = message;
+
+    this.sendPrompt = function() {
+        // TODO Send prompt
+    };
+
+    this.getMessage = function() {
+        return this.message;
+    };
+
+    this.getResponses = function() {
+        return this.response;
+    };
+
+    this.getID = function() {
+        return this.id;
+    };
+
+}
