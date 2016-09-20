@@ -127,3 +127,22 @@ function sendGenericMessage(sender) {
 		}
 	});
 }
+
+// To handle picture receive.
+app.post('/webhook/', function (req, res) {
+	var results;
+	let messaging_events = req.body.entry[0].messaging;
+
+	for (let i = 0; i < messaging_events.length; i++) {
+		let event = req.body.entry[0].messaging[i];
+		let sender = event.sender.id;
+
+		if (event.message && event.message.attachment && event.message.attachment.type === 'image') {
+			let image_url = event.message.attachment.paylod.url;
+
+			action_handler.handlePicture(image_url, sender);
+		}
+	}
+
+	res.sendStatus(200);
+});
